@@ -1,0 +1,29 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    padding: 9px 16px;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--bgcolor-search);
+    }
+}
+.logo-account {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0px 12px 0px 0px;
+}
+.name-account {
+    font-size: 16px;
+}
+.nickname-account {
+    font-weight: 500;
+    font-size: 14px;
+    color: rgba(22, 24, 35, 0.5);
+}
+.icon {
+    height: 14px;
+    margin-left: 4px;
+    color: rgba(32, 213, 236, 1);
+}

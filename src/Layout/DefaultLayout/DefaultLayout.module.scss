@@ -1,12 +1,16 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
+
 .container {
-    width: var(--defaultlayout-header-width);
+    max-width: var(--defaultlayout-header-width);
     display: flex;
+    justify-content: center;
+    margin: 0 170px;
 }
+
 .content {
     flex: 1;
+    background-color: aqua;
 }

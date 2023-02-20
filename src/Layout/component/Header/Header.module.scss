@@ -1,11 +1,133 @@
 .wrapper {
+    --defaultlayout-header-height: 60px;
+    --defaultlayout-header-width: 1150px;
+    --search-border-radius: 92px;
+    --fontsize-header: 16px;
+    --bgcolor-search: rgba(22, 24, 35, 0.06);
     width: 100%;
     display: flex;
     justify-content: center;
     height: var(--defaultlayout-header-height);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+
+    .inner {
+        height: 100%;
+        width: var(--defaultlayout-header-width);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px 0px 20px;
+    }
 }
-.inner {
+.logo {
+    min-width: 300px;
+}
+.search-box {
+    width: 361px;
+}
+.search {
+    height: 46px;
+    width: 361px;
+    background-color: var(--bgcolor-search);
+    border-radius: var(--search-border-radius);
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid transparent;
+    input {
+        width: 292px;
+        background-color: transparent;
+        padding: 0 16px;
+        font-size: var(--fontsize-header);
+        color: var(--black);
+        caret-color: var(--primary-color);
+    }
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: var(--black);
+    }
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1px;
+        height: 28px;
+        margin: 8px 0 10px 0;
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+    &:focus-within {
+        border-color: rgba(22, 24, 35, 0.34);
+    }
+}
+
+.close-btn {
+    margin: 0 8px;
+    color: rgba(22, 24, 35, 0.34);
+    font-size: var(--fontsize-header);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 52px;
     height: 100%;
-    width: var(--defaultlayout-header-width);
+    font-size: var(--fontsize-header);
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    color: gray;
+    &:hover {
+        background-color: var(--bgcolor-search);
+        cursor: pointer;
+    }
+    &:active {
+        background-color: var(--bgcolor-search);
+    }
+}
+.action {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    button {
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: var(--fontsize-header);
+    }
+    margin: 0 10px;
+}
+.upload-btn {
+    height: 36px;
+    width: 113px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    border: 1px solid transparent;
+    border-color: var(--bgcolor-search);
+    padding: 0 16px;
+    color: var(--black);
+    button {
+        background-color: transparent;
+    }
+}
+.login-btn {
+    height: 36px;
+    width: 113px;
+    background-color: var(--primary-color);
+    margin-left: 16px;
+}
+.bars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    margin-left: 16px;
+}
+.search-title {
+    height: 30px;
+    padding: 5px 12px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
 }
