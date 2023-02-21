@@ -89,32 +89,10 @@
     justify-content: space-around;
     align-items: center;
     button {
-        border-radius: 5px;
         cursor: pointer;
         font-size: var(--fontsize-header);
     }
     margin: 0 10px;
-}
-.upload-btn {
-    height: 36px;
-    width: 113px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    border: 1px solid transparent;
-    border-color: var(--bgcolor-search);
-    padding: 0 16px;
-    color: var(--black);
-    button {
-        background-color: transparent;
-    }
-}
-.login-btn {
-    height: 36px;
-    width: 113px;
-    background-color: var(--primary-color);
-    margin-left: 16px;
 }
 .bars {
     display: flex;

@@ -8,12 +8,13 @@ import 'tippy.js/dist/tippy.css';
 import { useEffect, useState } from 'react';
 import { Wrapper as PopperWrapper } from '../../../components/GlobalStyles/Popper';
 import AccountItem from '../../../components/AccountItem';
+import Button from '../../../components/Button';
 const cx = className.bind(styles);
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([1, 2, 3, 4]);
+            setSearchResult([1, 2, 3]);
         }, 0);
     }, []);
     return (
@@ -49,11 +50,11 @@ function Header() {
                     </div>
                 </Tippy>
                 <div className={cx('action')}>
-                    <div className={cx('upload-btn')}>
-                        <FontAwesomeIcon icon={faPlus} />
-                        <button>Upload</button>
-                    </div>
-                    <button className={cx('login-btn')}>Log in</button>
+                    <Button outlinePrimary lefticon={<FontAwesomeIcon icon={faPlus} />}>
+                        Upload
+                    </Button>
+                    <Button primary>Log in</Button>
+
                     <div className={cx('bars')}>
                         <FontAwesomeIcon icon={faBars} />
                     </div>
