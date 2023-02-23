@@ -1,18 +1,28 @@
 .wrapper {
-    color: white;
-
-    outline: 1px solid transparent;
+    cursor: pointer;
+    font-size: var(--fontsize-header);
+    background-color: transparent;
+    display: flex;
+    margin: 15px 10px;
 }
 .icon + .title,
 .title + .icon {
-    margin-left: 15px;
+    margin-left: 10px;
+}
+.icon {
+    display: inline-block;
+    width: 24px;
+    text-align: center;
 }
 .primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
     background-color: var(--primary-color);
     height: 36px;
     width: 113px;
     font-size: 16px;
-    margin-left: 16px;
     font-weight: 700;
     border-radius: 4px;
     &:hover {
