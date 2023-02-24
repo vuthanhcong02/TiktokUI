@@ -3,12 +3,30 @@
     display: flex;
     line-height: 22px;
 }
+
 .menu-item {
     display: flex;
     margin-bottom: 8px;
     padding: 2px;
+
     &:hover {
         background-color: var(--bgcolor-search);
         cursor: pointer;
     }
+}
+.header {
+    position: relative;
+    height: 50px;
+}
+.back-btn {
+    height: 100%;
+    width: 50px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.header-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

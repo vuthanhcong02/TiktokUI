@@ -24,6 +24,19 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faGlobe} />,
         title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    code: 'vie',
+                    title: 'Viet nam',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faQuestion} />,
