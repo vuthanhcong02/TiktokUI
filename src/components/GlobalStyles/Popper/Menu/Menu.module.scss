@@ -1,17 +1,21 @@
 .menu-list {
     width: 224px;
     display: flex;
-    line-height: 22px;
+    line-height: 2.2 rem;
 }
 
 .menu-item {
-    display: flex;
+    // display: flex;
     margin-bottom: 8px;
-    padding: 2px;
-
+    padding: 1px;
+    font-size: 1.2 rem;
+    line-height: 2.2 rem;
     &:hover {
         background-color: var(--bgcolor-search);
         cursor: pointer;
+    }
+    &.separate {
+        border-top: 1px solid rgba(22, 24, 35, 0.12);
     }
 }
 .header {
