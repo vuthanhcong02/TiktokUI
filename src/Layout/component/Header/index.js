@@ -1,19 +1,6 @@
 import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faBars,
-    faCoins,
-    faGears,
-    faGlobe,
-    faKeyboard,
-    faMagnifyingGlass,
-    faPlus,
-    faQuestion,
-    faSignOut,
-    faVideo,
-    faXmarkCircle,
-} from '@fortawesome/free-solid-svg-icons';
-import { faBell, faMessage, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faBars, faMagnifyingGlass, faPlus, faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
 import className from 'classnames/bind';
 import images from '../../../assets/images';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -25,11 +12,23 @@ import { Wrapper as PopperWrapper } from '../../../components/GlobalStyles/Poppe
 import AccountItem from '../../../components/AccountItem';
 import Button from '../../../components/Button';
 import Menu from '../../../components/GlobalStyles/Popper/Menu';
+import {
+    CoinIcon,
+    InboxIcon,
+    LogoutIcon,
+    MessageIcon,
+    ProfileIcon,
+    LiveIcon,
+    SettingIcon,
+    LanguageIcon,
+    FeedbackIcon,
+    KeybroadIcon,
+} from '../../../components/Icons';
 const cx = className.bind(styles);
 
 const MENU_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon={faGlobe} />,
+        icon: <LanguageIcon />,
         title: 'English',
         children: {
             title: 'Language',
@@ -46,12 +45,12 @@ const MENU_ITEMS = [
         },
     },
     {
-        icon: <FontAwesomeIcon icon={faQuestion} />,
+        icon: <FeedbackIcon />,
         title: 'Feedback and help',
         to: '/feedback',
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        icon: <KeybroadIcon />,
         title: 'Keybroad shortcuts',
     },
 ];
@@ -61,7 +60,7 @@ function Header() {
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([]);
+            setSearchResult([1, 2]);
         }, 0);
     }, []);
     const handleMenuChange = (MenuItem) => {
@@ -74,27 +73,27 @@ function Header() {
     };
     const userMenu = [
         {
-            icon: <FontAwesomeIcon icon={faUser} />,
+            icon: <ProfileIcon />,
             title: 'View profile',
         },
         {
-            icon: <FontAwesomeIcon icon={faCoins} />,
+            icon: <CoinIcon />,
             title: 'Get coins',
             to: '/coin',
         },
         {
-            icon: <FontAwesomeIcon icon={faVideo} />,
+            icon: <LiveIcon />,
             title: 'LIVE Studio',
             to: '/live',
         },
         {
-            icon: <FontAwesomeIcon icon={faGears} />,
+            icon: <SettingIcon />,
             title: 'Settings',
             to: 'setting',
         },
         ...MENU_ITEMS,
         {
-            icon: <FontAwesomeIcon icon={faSignOut} />,
+            icon: <LogoutIcon />,
             title: 'Log out',
             separate: true,
             to: 'logout',
@@ -140,12 +139,14 @@ function Header() {
                             </Button>
                             <Tippy content="Messages" placement="bottom" delay={[0, 300]}>
                                 <button className={cx('mes-btn')}>
-                                    <FontAwesomeIcon icon={faMessage} />
+                                    {/* <FontAwesomeIcon icon={faMessage} /> */}
+                                    <MessageIcon />
                                 </button>
                             </Tippy>
                             <Tippy content="Inbox" placement="bottom" delay={[0, 300]}>
                                 <button className={cx('notification-btn')}>
-                                    <FontAwesomeIcon icon={faBell} />
+                                    {/* <FontAwesomeIcon icon={faBell} /> */}
+                                    <InboxIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -158,7 +159,7 @@ function Header() {
                         </>
                     )}
 
-                    <Menu items={userMenu} onChage={handleMenuChange}>
+                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
                             <img
                                 className={cx('avatar-user')}

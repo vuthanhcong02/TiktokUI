@@ -4,15 +4,16 @@
     background-color: transparent;
     display: flex;
     margin: 9px 10px;
+    font-family: 'ProximaNova', sans-serif;
 }
 .icon + .title,
 .title + .icon {
     margin-left: 10px;
 }
 .icon {
-    display: inline-block;
-    width: 24px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .primary {
     display: flex;
@@ -23,7 +24,6 @@
     height: 36px;
     width: 113px;
     font-size: 16px;
-    font-weight: 700;
     border-radius: 4px;
     &:hover {
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
@@ -69,7 +69,6 @@
     min-width: 90px;
     height: 32px;
     font-size: 14px;
-    font-weight: 700;
     box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
     border-radius: 52px;
     line-height: 30px;
