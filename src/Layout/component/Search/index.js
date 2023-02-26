@@ -13,10 +13,16 @@ function Search() {
     const [showResult, setShowResult] = useState(false);
     const inputRef = useRef();
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3]);
-        }, 0);
-    }, []);
+        if (!searchValue.trim()) {
+            setSearchResult([]);
+            return;
+        }
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResult(res.data);
+            });
+    }, [searchValue]);
     const handleDelValue = () => {
         setSearchValue('');
         inputRef.current.focus();
@@ -26,8 +32,10 @@ function Search() {
         setShowResult(false);
     };
     const handleChangeResult = (e) => {
+        if (e.target.value.length > 0 && e.target.value === ' ') {
+            return;
+        }
         setSearchValue(e.target.value);
-        setSearchResult([1, 2, 3]);
     };
     return (
         <HeadlessTippy
@@ -37,10 +45,10 @@ function Search() {
                 <div className={cx('search-box')} tabIndex={-1} {...attrs}>
                     <PopperWrapper>
                         <h4 className={cx('search-title')}>Accounts</h4>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
+
+                        {searchResult.map((result) => (
+                            <AccountItem key={result.id} data={result} />
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
