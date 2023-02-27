@@ -6,24 +6,26 @@ import className from 'classnames/bind';
 import styles from './Search.module.scss';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { useEffect, useState, useRef } from 'react';
+import { useDebouced } from '../../../hooks';
 const cx = className.bind(styles);
 function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [showResult, setShowResult] = useState(false);
+    const debouced = useDebouced(searchValue, 800);
     const inputRef = useRef();
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debouced.trim()) {
             setSearchResult([]);
             return;
         }
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debouced)}&type=less`)
             .then((res) => res.json())
             .then((res) => {
                 setSearchResult(res.data);
             });
-    }, [searchValue]);
-    const handleDelValue = () => {
+    }, [debouced]);
+    const handleLClearInput = () => {
         setSearchValue('');
         inputRef.current.focus();
         setSearchResult([]);
@@ -65,7 +67,7 @@ function Search() {
                     }}
                 />
                 {!!searchValue && (
-                    <button className={cx('close-btn')} onClick={handleDelValue}>
+                    <button className={cx('close-btn')} onClick={handleLClearInput}>
                         <FontAwesomeIcon icon={faXmarkCircle} />
                     </button>
                 )}
