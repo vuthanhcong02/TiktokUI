@@ -7,6 +7,7 @@ import styles from './Search.module.scss';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { useEffect, useState, useRef } from 'react';
 import { useDebouced } from '../../../hooks';
+import * as searchService from '../../../apiServices/searchService';
 const cx = className.bind(styles);
 function Search() {
     const [searchResult, setSearchResult] = useState([]);
@@ -19,11 +20,11 @@ function Search() {
             setSearchResult([]);
             return;
         }
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debouced)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-            });
+        const fetchApi = async () => {
+            const result = await searchService.search(debouced);
+            setSearchResult(result);
+        };
+        fetchApi();
     }, [debouced]);
     const handleLClearInput = () => {
         setSearchValue('');
