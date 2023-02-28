@@ -35,49 +35,52 @@ function Search() {
         setShowResult(false);
     };
     const handleChangeResult = (e) => {
-        if (e.target.value.length > 0 && e.target.value === ' ') {
+        const searchResult = e.target.value;
+        if (searchResult.startsWith(' ')) {
             return;
         }
-        setSearchValue(e.target.value);
+        setSearchValue(searchResult);
     };
     return (
-        <HeadlessTippy
-            interactive={true}
-            visible={showResult && searchResult.length > 0}
-            render={(attrs) => (
-                <div className={cx('search-box')} tabIndex={-1} {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('search-title')}>Accounts</h4>
+        <div>
+            <HeadlessTippy
+                interactive={true}
+                visible={showResult && searchResult.length > 0}
+                render={(attrs) => (
+                    <div className={cx('search-box')} tabIndex={-1} {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('search-title')}>Accounts</h4>
 
-                        {searchResult.map((result) => (
-                            <AccountItem key={result.id} data={result} />
-                        ))}
-                    </PopperWrapper>
-                </div>
-            )}
-            onClickOutside={handleOutSide}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    placeholder="Searchs account and videos"
-                    onChange={handleChangeResult}
-                    onFocus={() => {
-                        setShowResult(true);
-                    }}
-                />
-                {!!searchValue && (
-                    <button className={cx('close-btn')} onClick={handleLClearInput}>
-                        <FontAwesomeIcon icon={faXmarkCircle} />
-                    </button>
+                            {searchResult.map((result) => (
+                                <AccountItem key={result.id} data={result} />
+                            ))}
+                        </PopperWrapper>
+                    </div>
                 )}
-                <span></span>
-                <button className={cx('search-btn')}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
-            </div>
-        </HeadlessTippy>
+                onClickOutside={handleOutSide}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        placeholder="Searchs account and videos"
+                        onChange={handleChangeResult}
+                        onFocus={() => {
+                            setShowResult(true);
+                        }}
+                    />
+                    {!!searchValue && (
+                        <button className={cx('close-btn')} onClick={handleLClearInput}>
+                            <FontAwesomeIcon icon={faXmarkCircle} />
+                        </button>
+                    )}
+                    <span></span>
+                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
+                </div>
+            </HeadlessTippy>
+        </div>
     );
 }
 

@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faPlus } from '@fortawesome/free-solid-svg-icons';
 import className from 'classnames/bind';
 import images from '../../../assets/images';
-
+import routeConfig from '../../../config/routes';
 import Tippy from '@tippyjs/react';
 
 import 'tippy.js/dist/tippy.css';
-
+import { Link } from 'react-router-dom';
 import Button from '../../../components/Button';
 import Menu from '../../../components/GlobalStyles/Popper/Menu';
 import {
@@ -32,6 +32,70 @@ const MENU_ITEMS = [
         children: {
             title: 'Language',
             data: [
+                {
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    code: 'vie',
+                    title: 'Viet nam',
+                },
+                {
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    code: 'vie',
+                    title: 'Viet nam',
+                },
+                {
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    code: 'vie',
+                    title: 'Viet nam',
+                },
+                {
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    code: 'vie',
+                    title: 'Viet nam',
+                },
+                {
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    code: 'vie',
+                    title: 'Viet nam',
+                },
+                {
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    code: 'vie',
+                    title: 'Viet nam',
+                },
+                {
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    code: 'vie',
+                    title: 'Viet nam',
+                },
+                {
+                    code: 'eng',
+                    title: 'English',
+                },
+                {
+                    code: 'vie',
+                    title: 'Viet nam',
+                },
                 {
                     code: 'eng',
                     title: 'English',
@@ -95,9 +159,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={routeConfig.home} className={cx('logo')}>
                     <img src={images.logo} alt="Tiktok" />
-                </div>
+                </Link>
                 <Search />
                 <div className={cx('action')}>
                     {currentUser ? (

@@ -9,7 +9,7 @@ import { useState } from 'react';
 import React from 'react';
 const cx = classNames.bind(styles);
 const defaultFn = () => {};
-function Menu({ children, items = [], onChage = defaultFn }) {
+function Menu({ children, items = [], onChage = defaultFn, hideonClick = 'false' }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
     const hanleMenu = () => {
@@ -32,6 +32,7 @@ function Menu({ children, items = [], onChage = defaultFn }) {
     };
     return (
         <Tippy
+            hideOnClick={hideonClick}
             delay={[0, 800]}
             offset={[16, 10]}
             interactive={true}
@@ -47,7 +48,7 @@ function Menu({ children, items = [], onChage = defaultFn }) {
                                 }}
                             />
                         )}
-                        {hanleMenu()}
+                        <div className={cx('menu-body')}> {hanleMenu()}</div>
                     </PopperWrapper>
                 </div>
             )}
