@@ -7,6 +7,8 @@ import MenuItem from './MenuItem';
 import Header from './Header';
 import { useState } from 'react';
 import React from 'react';
+import PropTypes from 'prop-types';
+
 const cx = classNames.bind(styles);
 const defaultFn = () => {};
 function Menu({ children, items = [], onChage = defaultFn, hideonClick = 'false' }) {
@@ -42,7 +44,7 @@ function Menu({ children, items = [], onChage = defaultFn, hideonClick = 'false'
                     <PopperWrapper>
                         {history.length > 1 && (
                             <Header
-                                title="Language"
+                                title={current.title}
                                 onBack={() => {
                                     setHistory((prev) => prev.slice(0, prev.length - 1));
                                 }}
@@ -60,5 +62,11 @@ function Menu({ children, items = [], onChage = defaultFn, hideonClick = 'false'
         </Tippy>
     );
 }
+Menu.propTypes = {
+    children: PropTypes.node.isRequired,
+    items: PropTypes.array,
+    onChage: PropTypes.bool,
 
+    hideonClick: PropTypes.func,
+};
 export default Menu;
