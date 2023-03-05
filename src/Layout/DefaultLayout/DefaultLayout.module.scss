@@ -6,7 +6,8 @@
 }
 
 .container {
-    max-width: var(--defaultlayout-header-width);
+    width: var(--defaultlayout-header-width);
+    max-width: 100%;
     display: flex;
     justify-content: center;
     margin: 0 170px;
@@ -14,5 +15,4 @@
 
 .content {
     flex: 1;
-    background-color: aqua;
 }
