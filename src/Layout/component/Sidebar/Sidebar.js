@@ -26,7 +26,6 @@ function Sidebar() {
                 <MenuItem title="LIVE" to={routeConfig.live} icon={<LiveIconn />} activeIcon={<LiveIconActive />} />
             </Menu>
             <SuggestedAccounts title="Suggested accounts" />
-            <SuggestedAccounts title="Following accounts" />
         </aside>
     );
 }
